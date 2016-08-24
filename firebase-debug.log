@@ -1,0 +1,71 @@
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.7
+[debug] Platform:     darwin
+[debug] Node Version: v5.1.0
+[debug] Time:         Wed Aug 24 2016 14:16:06 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/dan/dev/codefellows/fbdemo
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.7
+[debug] Platform:     darwin
+[debug] Node Version: v5.1.0
+[debug] Time:         Wed Aug 24 2016 14:23:45 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/dan/dev/codefellows/fbdemo
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.7
+[debug] Platform:     darwin
+[debug] Node Version: v5.1.0
+[debug] Time:         Wed Aug 24 2016 14:24:24 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/dan/dev/codefellows/fbdemo
+[warn] ⚠  Port 5000 is not available. Trying another port...
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5001
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.7
+[debug] Platform:     darwin
+[debug] Node Version: v5.1.0
+[debug] Time:         Wed Aug 24 2016 14:26:12 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/dan/dev/codefellows/fbdemo
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000
+[debug] ----------------------------------------------------------------------
+[debug] Command:      /usr/local/bin/node /usr/local/bin/firebase serve
+[debug] CLI Version:  3.0.7
+[debug] Platform:     darwin
+[debug] Node Version: v5.1.0
+[debug] Time:         Wed Aug 24 2016 14:32:30 GMT-0700 (PDT)
+[debug] ----------------------------------------------------------------------
+[debug] 
+[info] Starting Firebase development server...
+[info] 
+[info] Project Directory: /Users/dan/dev/codefellows/fbdemo
+[info] Public Directory: public
+[info] 
+[info] Server listening at: http://localhost:5000

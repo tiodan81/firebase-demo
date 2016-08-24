@@ -1,57 +1,20 @@
-var allItems = [];
-var grandTotals = {
-  price: 0,
-  tax: 0,
-  total: 0
-};
+itemView = {}
 
-var socks = new Item('socks', 8.99);
-var shoes = new Item('shoes', 49.99);
-var pantaloons = new Item('pantaloons', 89.99);
+itemView.init = function() {
+  $('.tab-content').hide()
+  $('#home').show()
+  form.addEventListener('submit', handleFormSubmit);
 
-var form = document.querySelector('form');
+  makeAllItemRows();
+  makeTotalRow();
+}
+
+var form = document.getElementById('item-form');
 
 var table = document.querySelector('table');
 var tbody = document.querySelector('tbody');
 var tfoot = document.querySelector('tfoot');
 
-function Item(name, price) {
-  this.name = name;
-  this.price = price;
-  this.tax = 0;
-  this.total = 0;
-  allItems.push(this);
-}
-
-Item.prototype.calcTax = function() {
-  this.tax = round(this.price * 0.095);
-};
-
-Item.prototype.calcTotal = function () {
-  return this.total = round(this.price + this.tax);
-};
-
-Item.prototype.updateGrandTotals = function () {
-  grandTotals.price += this.price;
-  grandTotals.tax += this.tax;
-  grandTotals.total += this.total;
-};
-
-Item.prototype.doAllTheMethods = function() {
-  this.calcTax();
-  this.calcTotal();
-  this.updateGrandTotals();
-};
-
-function round(num) {
-  return parseFloat(num.toFixed(2))
-}
-
-function updateObjects() {
-  for (elem of allItems) {
-    elem.doAllTheMethods();
-  }
-}
 
 function makeItemRow(obj) {
   var row = document.createElement('tr');
@@ -114,9 +77,3 @@ function handleFormSubmit(event) {
   event.target.name.value = null;
   event.target.price.value = null;
 }
-
-form.addEventListener('submit', handleFormSubmit);
-
-updateObjects();
-makeAllItemRows();
-makeTotalRow();
