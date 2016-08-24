@@ -60,20 +60,22 @@ function makeTotalRow() {
   tfoot.appendChild(row);
 }
 
-function handleFormSubmit(event) {
-  event.preventDefault();
+function handleFormSubmit(e) {
+  e.preventDefault();
 
-  var name = event.target.name.value;
-  var price = parseFloat(event.target.price.value);
+  var name = e.target.name.value;
+  var price = parseFloat(e.target.price.value);
 
-  var newItem = new Item(name, price);
-  newItem.doAllTheMethods();
+  itemController.save(name, price)
 
+  e.target.name.value = null;
+  e.target.price.value = null;
+}
+
+itemView.renderNewItem = function (newItem) {
   makeItemRow(newItem);
 
   tfoot.innerHTML = '';
   makeTotalRow();
 
-  event.target.name.value = null;
-  event.target.price.value = null;
 }

@@ -1,13 +1,4 @@
-var items = {}
-
-items.init = function(cb) {
-  var socks = new Item('socks', 8.99);
-  var shoes = new Item('shoes', 49.99);
-  var pantaloons = new Item('pantaloons', 89.99);
-  updateObjects();
-  cb();
-}
-
+var item = {}
 var allItems = [];
 var grandTotals = {
   price: 0,
@@ -15,7 +6,34 @@ var grandTotals = {
   total: 0
 };
 
-function Item(name, price) {
+item.init = function(data) {
+  Object.keys(data).forEach(function(i) {
+    var curItem = new item.Constructor(data[i].name, data[i].price)
+    curItem.doAllTheMethods();
+  })
+}
+
+item.save = function(i) {
+  db.ref('/items/' + i.name).set({
+    name: i.name,
+    price: i.price
+  })
+}
+
+item.fetchAll = function() {
+  return db.ref('/items/').once('value')
+    .then(function(snapshot) {
+      item.init(snapshot.val());
+    })
+}
+
+item.detectNewItem = function() {
+  db.ref('/items/').on('child_added', function(data) {
+    console.log('new item added');
+  })
+}
+
+item.Constructor = function (name, price) {
   this.name = name;
   this.price = price;
   this.tax = 0;
@@ -23,21 +41,21 @@ function Item(name, price) {
   allItems.push(this);
 }
 
-Item.prototype.calcTax = function() {
+item.Constructor.prototype.calcTax = function() {
   this.tax = round(this.price * 0.095);
 };
 
-Item.prototype.calcTotal = function () {
+item.Constructor.prototype.calcTotal = function () {
   return this.total = round(this.price + this.tax);
 };
 
-Item.prototype.updateGrandTotals = function () {
+item.Constructor.prototype.updateGrandTotals = function () {
   grandTotals.price += this.price;
   grandTotals.tax += this.tax;
   grandTotals.total += this.total;
 };
 
-Item.prototype.doAllTheMethods = function() {
+item.Constructor.prototype.doAllTheMethods = function() {
   this.calcTax();
   this.calcTotal();
   this.updateGrandTotals();
@@ -45,10 +63,4 @@ Item.prototype.doAllTheMethods = function() {
 
 function round(num) {
   return parseFloat(num.toFixed(2))
-}
-
-function updateObjects() {
-  for (var elem of allItems) {
-    elem.doAllTheMethods();
-  }
 }
