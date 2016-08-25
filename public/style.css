@@ -30,3 +30,7 @@ thead th {
 tfoot th {
   border-top: 2px solid black;
 }
+
+.tab-content {
+  display: none;
+}

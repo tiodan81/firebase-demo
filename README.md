@@ -9,3 +9,4 @@
 3. set up authentication (optional), or set database rules for public access
 4. decide how you want to [structure your data](https://firebase.google.com/docs/database/web/structure-data)
   - if creating users & using auth, it's a good idea to have separate data & user nodes
+  - consider the minimum representation of your data

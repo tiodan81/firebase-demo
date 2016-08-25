@@ -1,9 +1,28 @@
-var config = {
-  apiKey: "AIzaSyC3wMUgD8HwJ7oAEBKhnzGmwwOi1Z9eS7A",
-  authDomain: "cf301demo.firebaseapp.com",
-  databaseURL: "https://cf301demo.firebaseio.com",
-  storageBucket: "cf301demo.appspot.com",
-};
-firebase.initializeApp(config);
+var user = {}
 
-var db = firebase.database()
+user.createUser = function(email, pwd) {
+  firebase.auth()
+    .createUserWithEmailAndPassword(email, pwd)
+    .then(function(user) {
+      console.log(user);
+    })
+    .catch(function(error) {
+      console.error(error)
+    })
+}
+
+user.loginUser = function(email, pwd) {
+  firebase.auth()
+    .signInWithEmailAndPassword(email, pwd)
+    .then(function(user) {
+      console.log(user);
+    })
+    .catch(function(error) {
+      console.error(error)
+    })
+}
+
+user.logout = function() {
+  firebase.auth().signOut()
+  console.log('logged out');
+}

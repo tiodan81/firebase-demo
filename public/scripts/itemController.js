@@ -1,9 +1,10 @@
 var itemController = {}
 
 itemController.index = function() {
-  item.fetchAll().then(function(){
-    itemView.init();
-  })
+  item.fetchAll()
+    .then(function(){
+      itemView.init();
+    })
   item.detectNewItem()
 }
 
