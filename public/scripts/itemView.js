@@ -1,11 +1,12 @@
 itemView = {}
 
-itemView.init = function() {
+itemView.init = function(ctx, next) {
+  console.log(ctx);
   $('.tab-content').hide()
   $('#home').show()
   form.addEventListener('submit', handleFormSubmit);
 
-  makeAllItemRows();
+  makeAllItemRows(ctx.finishedData);
   makeTotalRow();
 }
 
@@ -38,8 +39,8 @@ function makeItemRow(obj) {
   tbody.appendChild(row);
 }
 
-function makeAllItemRows() {
-  for (var item of allItems) {
+function makeAllItemRows(items) {
+  for (var item of items) {
     makeItemRow(item);
   }
 }

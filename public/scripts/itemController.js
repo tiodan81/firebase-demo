@@ -1,11 +1,12 @@
 var itemController = {}
 
-itemController.index = function() {
-  item.fetchAll()
+itemController.index = function(ctx, next) {
+
+  item.fetchAll(ctx, next)
     .then(function(){
-      itemView.init();
+      ctx.allItems = allItems
+      next();
     })
-  item.detectNewItem()
 }
 
 itemController.save = function(name, price) {

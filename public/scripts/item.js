@@ -1,18 +1,10 @@
 var item = {}
-var allItems = [];
+// var allItems = [];
 var grandTotals = {
   price: 0,
   tax: 0,
   total: 0
 };
-
-item.init = function(data) {
-  Object.keys(data).forEach(function(i) {
-    var curItem = new item.Constructor(data[i].name, data[i].price)
-    curItem.doAllTheMethods();
-  })
-}
-
 item.save = function(i) {
   db.ref('/items/' + i.name).set({
     name: i.name,
@@ -20,11 +12,27 @@ item.save = function(i) {
   })
 }
 
-item.fetchAll = function() {
-  return db.ref('/items/').once('value')
+item.init = function(ctx, next) {
+  console.log(ctx);
+   ctx.finishedData = []
+
+  Object.keys(ctx.rawData).forEach(function(i) {
+    var curItem = new item.Constructor(ctx.rawData[i].name, ctx.rawData[i].price)
+    curItem.doAllTheMethods();
+    ctx.finishedData.push(curItem)
+  })
+
+  next()
+}
+
+item.fetchAll = function(ctx, next) {
+  ctx.rawData;
+  db.ref('/items/').once('value')
     .then(function(snapshot) {
-      item.init(snapshot.val());
+      ctx.rawData = snapshot.val();
+      next()
     })
+
 }
 
 item.detectNewItem = function() {
@@ -38,7 +46,7 @@ item.Constructor = function (name, price) {
   this.price = price;
   this.tax = 0;
   this.total = 0;
-  allItems.push(this);
+  // allItems.push(this);
 }
 
 item.Constructor.prototype.calcTax = function() {
